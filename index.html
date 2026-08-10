@@ -220,7 +220,10 @@
 
   <p class="affil">
     <span>KTH Royal Institute of Technology, Stockholm</span>
-    <span><a href="mailto:verkama@kth.se">verkama@kth.se</a></span>
+    <!-- The address is written as HTML entities so that scrapers reading the
+         raw file don't see it. Browsers decode it, so this displays and
+         behaves exactly like a normal mailto link. It reads verkama@kth.se. -->
+    <span><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#101;&#114;&#107;&#97;&#109;&#97;&#64;&#107;&#116;&#104;&#46;&#115;&#101;">&#118;&#101;&#114;&#107;&#97;&#109;&#97;&#64;&#107;&#116;&#104;&#46;&#115;&#101;</a></span>
   </p>
 
   <p>
@@ -238,7 +241,7 @@
   <a href="#publications">Publications</a>
   <a href="#benchmarks">Benchmarks</a>
   <a href="#events">Talks</a>
-  <a href="#contact">Contact</a>
+  <a href="#links">Links</a>
 </nav>
 
 <!-- ==============================================================
@@ -510,18 +513,10 @@
 -->
 
 <!-- ==============================================================
-     CONTACT
+     LINKS
      ============================================================== -->
-<section id="contact">
-  <h2>Contact</h2>
-
-  <p>
-    <a href="mailto:verkama@kth.se">verkama@kth.se</a><br>
-    Department of Mathematics<br>
-    KTH Royal Institute of Technology<br>
-    Lindstedtsv&auml;gen 25<br>
-    114 28 Stockholm, Sweden
-  </p>
+<section id="links">
+  <h2>Links</h2>
 
   <p>
     <!-- Once you've saved a cv.pdf next to this file, uncomment the line below.
