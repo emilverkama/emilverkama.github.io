@@ -9,6 +9,7 @@ index.html    the entire site
 photo.jpg     portrait
 favicon.svg   tab icon
 CNAME         custom domain for GitHub Pages
+slides/       talk slides and posters, linked from Talks & Events
 ```
 
 Feel free to borrow the layout if it's useful to you. The text and photograph are mine.
