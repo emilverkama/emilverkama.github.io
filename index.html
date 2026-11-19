@@ -35,39 +35,34 @@
     --ink:      #1a1a1a;
     --muted:    #5f5f5f;
     --rule:     #e0ddd6;
-    --link:     #7a2018;
+    --link:     #1d67c0;
     --bg:       #fdfcfa;
     --measure:  42rem;   /* text column width */
   }
 
-  html { font-size: 17px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-
-  /* Respect the system setting for people who find motion uncomfortable. */
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-  }
+  html { font-size: 17px; -webkit-text-size-adjust: 100%; }
 
   body {
     margin: 0;
     padding: 0 1.5rem 6rem;
     background: var(--bg);
     color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, serif;
+    font-family: serif;
     line-height: 1.6;
   }
 
+  h1, h2, h3 { font-family: Helvetica, Arial, sans-serif; font-weight: bold; }
+
   .wrap { max-width: var(--measure); margin: 0 auto; }
 
-  a { color: var(--link); text-decoration: none; border-bottom: 1px solid rgba(122,32,24,.28); }
-  a:hover { border-bottom-color: var(--link); }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
   /* ---- Masthead -------------------------------------------- */
-  header { padding: 4.5rem 0 0; }
+  header { padding: 4.5rem 0 0; margin-bottom: 2.5rem; }
 
   h1 {
     font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
     margin: 0 0 .9rem;
   }
 
@@ -81,63 +76,27 @@
   /* Portrait. Delete this block and the <img> below if unwanted. */
   .portrait {
     float: right;
-    width: 115px;
-    height: 115px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 3px;
     margin: 0.4rem 0rem 2rem 1.75rem;
     /* For a more austere look, add: filter: grayscale(100%); */
   }
 
-  /* ---- Navigation ------------------------------------------ */
-  /* position:sticky keeps the bar at the top of the window once you
-     scroll past it. The background colour is what stops the page text
-     showing through underneath. To go back to a nav that scrolls away
-     with the rest of the page, delete the first four lines. */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--bg);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: .7rem 0;
-    margin-bottom: 2.5rem;
-    font-size: .85rem;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-  }
-  nav a {
-    margin-right: 1.4rem;
-    border-bottom: none;
-    color: var(--muted);
-  }
-  nav a:hover { color: var(--ink); }
-
   /* ---- Sections -------------------------------------------- */
-  /* scroll-margin-top stops a section heading from landing underneath
-     the sticky nav when you click a link in it. Keep it a little
-     larger than the height of the bar. */
-  section { margin-bottom: 3.5rem; scroll-margin-top: 4.5rem; }
+  section { margin-bottom: 2.75rem; }
 
   h2 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 0 0 1.2rem;
-    padding-bottom: .4rem;
+    font-size: 1.35rem;
+    margin: 0 0 .9rem;
+    padding-bottom: .3rem;
     border-bottom: 1px solid var(--rule);
   }
 
   h3 {
-    font-size: .8rem;
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 2rem 0 .8rem;
+    font-size: 1.05rem;
+    margin: 1.5rem 0 .6rem;
   }
 
   p { margin: 0 0 1rem; }
@@ -145,15 +104,19 @@
   /* ---- Item lists (papers, talks, courses) ----------------- */
   .item-list { list-style: none; padding: 0; margin: 0; }
 
+  /* --date-col is the width of the date column; wide enough for "Nov 2025". */
+  .item-list { --date-col: 4.6rem; }
+
   .item-list li {
-    margin-bottom: 1.35rem;
-    padding-left: 3.2rem;
-    text-indent: -3.2rem;   /* hanging indent, like a bibliography */
+    margin-bottom: 1rem;
+    padding-left: var(--date-col);
+    text-indent: calc(-1 * var(--date-col));   /* hanging indent, like a bibliography */
   }
 
   .year {
     display: inline-block;
-    width: 3.2rem;
+    width: var(--date-col);
+    white-space: nowrap;
     text-indent: 0;
     color: var(--muted);
     font-variant-numeric: tabular-nums;
@@ -161,7 +124,7 @@
     vertical-align: top;
   }
 
-  .item-body { display: inline-block; text-indent: 0; max-width: calc(100% - 3.3rem); }
+  .item-body { display: inline-block; text-indent: 0; max-width: calc(100% - .1rem); }
 
   .title { font-style: italic; }
 
@@ -171,7 +134,7 @@
     font-size: .9rem;
   }
 
-  .links { font-size: .85rem; }
+  .links { display: block; font-size: .85rem; }
   .links a { margin-right: .8rem; }
 
   /* ---- Footer ---------------------------------------------- */
@@ -186,20 +149,17 @@
   @media (max-width: 40rem) {
     header { padding-top: 2.5rem; }
     h1 { font-size: 1.6rem; }
-    .portrait { width: 110px; height: 110px; margin-left: 1.25rem; }
+    .portrait { width: 95px; height: 95px; margin-left: 1.25rem; }
     .item-list li { padding-left: 0; text-indent: 0; }
     .year { display: block; width: auto; }
     .item-body { max-width: 100%; }
-    nav a { margin-right: 1rem; line-height: 2; }
-    /* The nav wraps onto two lines here, so it needs more clearance. */
-    section { scroll-margin-top: 7rem; }
   }
 
   /* ---- Print ----------------------------------------------- */
   @media print {
-    nav, .portrait { display: none; }
+    .portrait { display: none; }
     body { background: #fff; }
-    a { color: var(--ink); border: none; }
+    a { color: var(--ink); }
   }
 </style>
 </head>
@@ -234,15 +194,11 @@
     <a href="https://www.kth.se/math/act/comb/kth-combinatorics-seminar-1.1351755">KTH Combinatorics Seminar</a>; get in touch if you would like to give a talk!
   </p>
 
-</header>
+  <p>
+    New preprint: <a href="https://arxiv.org/abs/2611.17237"><em>Permutation patterns and higher connectivity in inversion graphs</em></a>.
+  </p>
 
-<nav>
-  <a href="#research">Research</a>
-  <a href="#publications">Publications</a>
-  <a href="#benchmarks">Benchmarks</a>
-  <a href="#events">Talks</a>
-  <a href="#links">Links</a>
-</nav>
+</header>
 
 <!-- ==============================================================
      RESEARCH
@@ -251,16 +207,11 @@
   <h2>Research</h2>
 
   <p>
-    I like counting things, such as permutations, standard Young tableaux, and
-    lattice points in polytopes.
+    Much of my work concerns <a href="https://en.wikipedia.org/wiki/Permutation_pattern">pattern-avoiding permutations</a>, and particularly the notorious pattern 1324. In a series of two papers with Svante Linusson, Anders Claesson and Henning Ulfarsson, we made progress on the innocent-looking <a href="https://akc.is/inv-mono/">inversion monotonicity conjecture</a> of Claesson, Jel&iacute;nek and Steingr&iacute;msson, which asserts that the number of 1324-avoiding permutations of size \(n\) with a fixed number of inversions is weakly increasing in \(n\). This conjecture is important, because it gives a new upper bound for the exponential growth rate of the 1324-avoiding permutations. In a recent paper, I expand on the method we developed with Svante.
   </p>
 
   <p>
-    Much of my work concerns <a href="https://en.wikipedia.org/wiki/Permutation_pattern">pattern-avoiding permutations</a>, and particularly the notorious pattern 1324. In a series of two papers with Svante Linusson, Anders Claesson and Henning Ulfarsson, we made progress on the innocent-looking <a href="https://akc.is/inv-mono/">inversion monotonicity conjecture</a> of Claesson, Jel&iacute;nek and Steingr&iacute;msson, which asserts that the number of 1324-avoiding permutations of size \(n\) with a fixed number of inversions is weakly increasing in \(n\). This conjecture is important, because it gives a new upper bound for the exponential growth rate of the 1324-avoiding permutations.
-  </p>
-
-  <p>
-    I have also worked on more algebraic and geometric problems. With Jon P&aring;l Hamre, Benjamin Schr&ouml;ter and Lorenzo Vecchi, we showed that the <a href="https://arxiv.org/abs/1004.2403">Chow class</a> of a snake <a href="https://en.wikipedia.org/wiki/Matroid">matroid</a> admits a combinatorial interpretation in terms of <a href="https://en.wikipedia.org/wiki/Young_tableau">standard Young tableaux</a>. With Krishna Menon, we answered a question of Stanley by interpreting the <a href="https://en.wikipedia.org/wiki/Ehrhart_polynomial">Ehrhart coefficients</a> of <a href="https://en.wikipedia.org/wiki/Cross-polytope">cross-polytopes</a> in terms of certain colored permutations.
+    I have also worked on more algebraic and geometric problems. With Jon P&aring;l Hamre, Benjamin Schr&ouml;ter and Lorenzo Vecchi, we showed that the <a href="https://arxiv.org/abs/1004.2403">Chow class</a> of a lattice path <a href="https://en.wikipedia.org/wiki/Matroid">matroid</a> admits a combinatorial interpretation in terms of <a href="https://en.wikipedia.org/wiki/Young_tableau">standard Young tableaux</a>. With Krishna Menon, we answered a question of Stanley by interpreting the <a href="https://en.wikipedia.org/wiki/Ehrhart_polynomial">Ehrhart coefficients</a> of <a href="https://en.wikipedia.org/wiki/Cross-polytope">cross-polytopes</a> in terms of certain colored permutations.
   </p>
 
   <p>
@@ -278,6 +229,15 @@
 
   <h3>Preprints</h3>
   <ul class="item-list">
+
+    <li>
+      <span class="year">2026</span><span class="item-body">
+        <span class="title">Permutation patterns and higher connectivity in inversion graphs</span>
+        <span class="links">
+          <a href="https://arxiv.org/abs/2611.17237">arXiv:2611.17237</a>
+        </span>
+      </span>
+    </li>
 
     <li>
       <span class="year">2026</span><span class="item-body">
@@ -303,9 +263,10 @@
       <span class="year">2025</span><span class="item-body">
         <span class="title">Chow classes of matroids and standard Young tableaux</span>
         <span class="venue">with Jon P&aring;l Hamre, Benjamin Schr&ouml;ter and Lorenzo Vecchi.</span>
-        <span class="note">Accepted for a poster at FPSAC 2026.</span>
+        <span class="note">Accepted for a poster at FPSAC 2026 (presented by Jon P&aring;l Hamre).</span>
         <span class="links">
           <a href="https://arxiv.org/abs/2511.01711">arXiv:2511.01711</a>
+          <a href="https://www.mat.univie.ac.at/~slc/wpapers/FPSAC2026/34.html">FPSAC 2026 abstract</a>
         </span>
       </span>
     </li>
@@ -404,23 +365,30 @@
 <section id="events">
   <h2>Talks &amp; Events</h2>
 
+  <!-- No upcoming events at the moment, so this heading is hidden. To bring
+       it back, move these lines out of the comment and add an <li> per event.
   <h3>Upcoming Events</h3>
   <ul class="item-list">
 
-    <li>
-      <span class="year">Oct 2026</span><span class="item-body">
-        <span class="title"><a href="https://www.mat.univie.ac.at/~slc/wpapers/s96.html">S&eacute;minaire Lotharingien de Combinatoire, SLC 96</a></span>
-        <span class="venue">Strobl, Austria.</span>
-      </span>
-    </li>
-
   </ul>
+  -->
 
   <!-- To add the title of a talk, put it in the venue line like this:
        <span class="venue">Talk: <em>Title here</em>. Venue, City.</span> -->
 
   <h3>Selected Talks and Posters</h3>
   <ul class="item-list">
+
+    <li>
+      <span class="year">Oct 2026</span><span class="item-body">
+        <span class="title"><a href="https://www.mat.univie.ac.at/~slc/wpapers/s96.html">S&eacute;minaire Lotharingien de Combinatoire, SLC 96</a></span>
+        <span class="venue">Talk: <em>Patterns and connectivity in inversion graphs</em>.
+        Strobl, Austria.</span>
+        <span class="links">
+          <a href="slides/slc96.pdf">Slides (PDF)</a>
+        </span>
+      </span>
+    </li>
 
     <li>
       <span class="year">Jun 2026</span><span class="item-body">
@@ -499,7 +467,6 @@
      TEACHING — commented out so the placeholders don't appear on the
      live page. Fill in your real courses, then delete the "<!- -" on
      the line above and the "- ->" below to switch the section back on.
-     Remember to add Teaching back to the <nav> list as well.
 
 <section id="teaching">
   <h2>Teaching</h2>
